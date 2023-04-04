@@ -21,6 +21,7 @@ public class Main {
                 case "info" -> info.info(hashset, date);
                 case "show" -> show.show(hashset);
                 case "add" -> add.addVehicle(hashset,sc);
+                case "update" -> update.updateID(hashset, sc);
                 case "exit" -> work = false;
             }
         }
