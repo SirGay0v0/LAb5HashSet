@@ -99,20 +99,20 @@ public interface add {
             System.out.print("Выберите тип добавляемого элемента(CAR, HELICOPTER, SUBMARINE, BOAT):");
             String choice = sc.nextLine();
             switch (choice) {
-                case "CAR" -> {
-                    newVehicle.setType(VehicleType.CAR);
-                    check = false;
-                }
-                case "HELICOPTER" -> {
-                    newVehicle.setType(VehicleType.HELICOPTER);
-                    check = false;
-                }
-                case "SUBMARINE" -> {
-                    newVehicle.setType(VehicleType.SUBMARINE);
+                case "DRONE" -> {
+                    newVehicle.setType(VehicleType.DRONE);
                     check = false;
                 }
                 case "BOAT" -> {
                     newVehicle.setType(VehicleType.BOAT);
+                    check = false;
+                }
+                case "HOVERBOARDE" -> {
+                    newVehicle.setType(VehicleType.HOVERBOARD);
+                    check = false;
+                }
+                case "SPACESHIP" -> {
+                    newVehicle.setType(VehicleType.SPACESHIP);
                     check = false;
                 }
                 default -> System.out.println("Введен неверный тип. Попробуйте еще раз.");
