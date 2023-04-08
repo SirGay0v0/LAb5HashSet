@@ -12,5 +12,6 @@ public interface removeById {
                 hashSet.remove(delete);
             }
         }
+        System.out.println("Элемент с ID - " + id+ " был успешно удален из коллекции.");
     }
 }

@@ -18,22 +18,37 @@ public class Main {
         while (work) {
             System.out.print("Напишите команду:");
             String choose = sc.nextLine();
-            Pattern pattern = Pattern.compile("\\d+");
-            Matcher matcher = pattern.matcher(choose);
-            int id = 0;
-            if (matcher.find()) {
-                id = Integer.parseInt(matcher.group());
+            Pattern patternNumber = Pattern.compile("\\d+");
+            Pattern patternEnum = Pattern.compile("[A-Z]*$");
+            Matcher matcherNumber = patternNumber.matcher(choose);
+            Matcher matcherEnum = patternEnum.matcher(choose);
+            int peremennayaNumber = 0;
+            String peremennayaEnum = "";
+            if (matcherNumber.find()) {
+                peremennayaNumber = Integer.parseInt(matcherNumber.group());
                 choose = choose.replaceAll("\s\\d+", "");
+            }
+            if (matcherEnum.find()) {
+                peremennayaEnum = matcherEnum.group();
             }
             switch (choose) {
                 case "help" -> help.help();
                 case "info" -> info.info(hashset, date);
                 case "show" -> show.show(hashset);
                 case "add" -> add.addVehicle(hashset, sc);
-                case "update id" -> update.updateID(hashset, sc, id);
-                case "remove_by_id" -> removeById.remove(hashset, id);
+                case "update id" -> update.updateID(hashset, sc, peremennayaNumber);
+                case "remove_by_id" -> removeById.remove(hashset, peremennayaNumber);
                 case "clear" -> clear.clear(hashset);
+
+
                 case "exit" -> work = false;
+                case "add_if_max" -> addIfMax.addifmax(hashset, peremennayaNumber);
+                case "add_if_min" -> addIfMin.addifmin(hashset, peremennayaNumber);
+                case "remove_lower" -> removeLower.removelower(hashset, peremennayaNumber);
+                case "average_of_number_of_wheels" -> averageOfWheels.averagaWheels(hashset);
+                case "min_by_engine_power" -> minByEnginePower.minPower(hashset);
+                case "filter_greater_than_type" -> filterGreater.filter(hashset, peremennayaEnum);
+
             }
         }
     }
