@@ -47,7 +47,7 @@ public interface filterGreater {
                     }
                     check = false;
                 }
-                case "null" -> {
+                case "" -> {
                     for (Vehicle vehicle : hashSet) {
                         if (vehicle.getType() == VehicleType.SPACESHIP) {
                             System.out.println(vehicle);

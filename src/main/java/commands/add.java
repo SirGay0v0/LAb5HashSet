@@ -116,7 +116,7 @@ public interface add {
                     newVehicle.setType(VehicleType.SPACESHIP);
                     check = false;
                 }
-                case "null" -> {
+                case "" -> {
                     newVehicle.setType(null);
                     check = false;
                 }
