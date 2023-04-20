@@ -1,5 +1,7 @@
 package vehicle_types_coordinates;
 
+import org.jdom2.Element;
+
 public class Coordinates {
     private float x;
     private int y;

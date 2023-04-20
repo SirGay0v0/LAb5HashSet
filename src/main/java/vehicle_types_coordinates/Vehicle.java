@@ -29,6 +29,9 @@ public class Vehicle {
     public void setName(String name, Scanner sc) {
         this.name = name;
     }
+    public void setName(String name){
+        this.name = name;
+    }
 
     public Coordinates getCoordinates() {
         return coordinates;

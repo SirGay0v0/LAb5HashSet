@@ -9,7 +9,8 @@ import java.util.HashSet;
 
 public interface saveCollection {
     static void save(HashSet<Vehicle> hashSet, Path path) throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter(path + "Collection.xml");
+
+        PrintWriter writer = new PrintWriter(String.valueOf(path));
         writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
         writer.println("<HashSet>");
         for (Vehicle vehicle : hashSet) {

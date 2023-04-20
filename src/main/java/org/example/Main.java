@@ -2,6 +2,7 @@ package org.example;
 
 import commands.*;
 import vehicle_types_coordinates.Vehicle;
+import xmlToCollection.XMLjdomReader;
 
 import javax.sound.sampled.Line;
 import java.io.*;
@@ -20,23 +21,25 @@ public class Main {
 
         final String path = System.getenv("Proga_5_Lab_HashSet");
 
-        BufferedReader buff = new BufferedReader(new FileReader(path + "Collection.xml"));
+        XMLjdomReader.xmlParser(hashset, Path.of(path));
 
-        String line, wrongLine;
-        ArrayList<String> array = new ArrayList<>();
-
-
-        Pattern pattern = Pattern.compile(">[a-zA-Z0-9.:-]*<");
-        while (!(line = buff.readLine()).equals("</HashSet>")) {
-            Matcher matcher = pattern.matcher(line);
-            if (matcher.find()) {
-
-                wrongLine = matcher.group(Integer.toString(Integer.parseInt(line)));
-                wrongLine = Arrays.toString(wrongLine.split("[><]"));
-                array.add(wrongLine);
-                System.out.println(array);
-            }
-        }
+        BufferedReader buff = new BufferedReader(new FileReader(path));
+//
+//        String line, wrongLine;
+//        ArrayList<String> array = new ArrayList<>();
+//
+//
+//        Pattern pattern = Pattern.compile(">[a-zA-Z0-9.:-]*<");
+//        while (!(line = buff.readLine()).equals("</HashSet>")) {
+//            Matcher matcher = pattern.matcher(line);
+//            if (matcher.find()) {
+//
+//                wrongLine = matcher.group(Integer.toString(Integer.parseInt(line)));
+//                wrongLine = Arrays.toString(wrongLine.split("[><]"));
+//                array.add(wrongLine);
+//                System.out.println(array);
+//            }
+//        }
 
 
         Scanner sc = new Scanner(System.in);
