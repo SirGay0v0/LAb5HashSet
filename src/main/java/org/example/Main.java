@@ -4,9 +4,7 @@ import commands.*;
 import vehicle_types_coordinates.Vehicle;
 import xmlToCollection.XMLjdomReader;
 
-import javax.sound.sampled.Line;
 import java.io.*;
-import java.nio.Buffer;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -17,30 +15,15 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         HashSet<Vehicle> hashset = new HashSet<>();
+        Iterator<Vehicle> vehicleIterator = hashset.iterator();
         Date date = new Date();
 
-        final String path = System.getenv("Proga_5_Lab_HashSet");
+        final String pathCollection = System.getenv("Proga_5_Lab_HashSet_Collection");
+        final String pathScript = System.getenv("Proga_5_Lab_HashSet_Script");
 
-        XMLjdomReader.xmlParser(hashset, Path.of(path));
+        XMLjdomReader.xmlParser(hashset, Path.of(pathCollection));
 
-        BufferedReader buff = new BufferedReader(new FileReader(path));
-//
-//        String line, wrongLine;
-//        ArrayList<String> array = new ArrayList<>();
-//
-//
-//        Pattern pattern = Pattern.compile(">[a-zA-Z0-9.:-]*<");
-//        while (!(line = buff.readLine()).equals("</HashSet>")) {
-//            Matcher matcher = pattern.matcher(line);
-//            if (matcher.find()) {
-//
-//                wrongLine = matcher.group(Integer.toString(Integer.parseInt(line)));
-//                wrongLine = Arrays.toString(wrongLine.split("[><]"));
-//                array.add(wrongLine);
-//                System.out.println(array);
-//            }
-//        }
-
+        BufferedReader buff = new BufferedReader(new FileReader(pathCollection));
 
         Scanner sc = new Scanner(System.in);
         boolean work = true;
@@ -50,37 +33,45 @@ public class Main {
 
             Pattern patternNumber = Pattern.compile("\\d+");
             Pattern patternEnum = Pattern.compile("[A-Z]*$");
+            Pattern patternScript = Pattern.compile("^(execute_script)\s");
 
             Matcher matcherNumber = patternNumber.matcher(choose);
             Matcher matcherEnum = patternEnum.matcher(choose);
+            Matcher matcherScript = patternScript.matcher(choose);
 
-            int peremennayaNumber = 0;
-            String peremennayaEnum = "";
+            int variableNumber = 0;
+            String variableEnum = "";
+            String variableScript = "";
 
             if (matcherNumber.find()) {
-                peremennayaNumber = Integer.parseInt(matcherNumber.group());
+                variableNumber = Integer.parseInt(matcherNumber.group());
                 choose = choose.replaceAll("\s\\d+", "");
             }
             if (matcherEnum.find()) {
-                peremennayaEnum = matcherEnum.group();
+                variableEnum = matcherEnum.group();
+                choose = choose.replaceAll("\s[A-Z]*$", "");
+            }
+            if(matcherScript.find()){
+                variableScript = choose.replaceAll("^(execute_script)\s", "");
+                choose = choose.replaceAll("\s[\\d\\S]*$", "");
             }
             switch (choose) {
                 case "help" -> help.help();
                 case "info" -> info.info(hashset, date);
                 case "show" -> show.show(hashset);
                 case "add" -> add.addVehicle(hashset, sc);
-                case "update id" -> update.updateID(hashset, sc, peremennayaNumber);
-                case "remove_by_id" -> removeById.remove(hashset, peremennayaNumber);
+                case "update id" -> updateID.updateID(hashset, sc, variableNumber);
+                case "remove_by_id" -> removeById.remove(hashset, variableNumber);
                 case "clear" -> clear.clear(hashset);
-                case "save" -> saveCollection.save(hashset, Path.of(path));
-
+                case "save" -> saveCollection.save(hashset, Path.of(pathCollection));
+                case "execute_script" -> executeScript.script(Path.of(pathScript), Path.of(pathCollection), variableScript, hashset, vehicleIterator,date);
                 case "exit" -> work = false;
-                case "add_if_max" -> addIfMax.addifmax(hashset, peremennayaNumber);
-                case "add_if_min" -> addIfMin.addifmin(hashset, peremennayaNumber);
-                case "remove_lower" -> removeLower.removelower(hashset, peremennayaNumber);
+                case "add_if_max" -> addIfMax.addifmax(hashset, variableNumber);
+                case "add_if_min" -> addIfMin.addifmin(hashset, variableNumber);
+                case "remove_lower" -> removeLower.removelower(hashset, variableNumber);
                 case "average_of_number_of_wheels" -> averageOfWheels.averagaWheels(hashset);
                 case "min_by_engine_power" -> minByEnginePower.minPower(hashset);
-                case "filter_greater_than_type" -> filterGreater.filter(hashset, peremennayaEnum);
+                case "filter_greater_than_type" -> filterGreater.filter(hashset, variableEnum);
 
             }
         }

@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public interface addIfMin {
     static void addifmin(HashSet<Vehicle> hashSet, int minCapacity) {
-        float minCapacityHashset = 0;
+        float minCapacityHashset = 999999999;
         for (Vehicle min : hashSet) {
             if (min.getCapacity() < minCapacityHashset) {
                 minCapacityHashset = min.getCapacity();
