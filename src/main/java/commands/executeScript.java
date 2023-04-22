@@ -83,38 +83,32 @@ public interface executeScript {
                     System.out.println();
                     break;
                 case "update id":
-//                    Vehicle updateVehicle = new Vehicle();
-//                    updateVehicle.setId(variableNumber);
-//                    updateVehicle.setName(buff.readLine());
-//                    float updateX = Float.parseFloat(buff.readLine());
-//                    int updateY = Integer.parseInt(buff.readLine());
-//                    updateVehicle.setCoordinates(new Coordinates(updateX, updateY));
-//                    LocalDateTime creationDate = LocalDateTime.now();
-//                    updateVehicle.setCreationDate(creationDate);
-//                    updateVehicle.setEnginePower(Long.parseLong(buff.readLine()));
-//                    updateVehicle.setNumberOfWheels(Long.parseLong(buff.readLine()));
-//                    updateVehicle.setCapacity(Float.parseFloat(buff.readLine()));
-//                    updateVehicle.setType(VehicleType.valueOf(buff.readLine()));
-//                    for (Vehicle veh : hashset) {
-//                        if (veh.getId() == variableNumber) {
-//                            iterator.remove();
-//                        }
-//                    }
-//                    hashset.add(updateVehicle);
-//                    System.out.println("Элемент с ID - " + variableNumber + " был успешно обновлен.");
-//                    System.out.println();
+                    Vehicle updateVehicle = new Vehicle();
+                    updateVehicle.setId(variableNumber);
+                    updateVehicle.setName(buff.readLine());
+                    float updateX = Float.parseFloat(buff.readLine());
+                    int updateY = Integer.parseInt(buff.readLine());
+                    updateVehicle.setCoordinates(new Coordinates(updateX, updateY));
+                    LocalDateTime creationDate = LocalDateTime.now();
+                    updateVehicle.setCreationDate(creationDate);
+                    updateVehicle.setEnginePower(Long.parseLong(buff.readLine()));
+                    updateVehicle.setNumberOfWheels(Long.parseLong(buff.readLine()));
+                    updateVehicle.setCapacity(Float.parseFloat(buff.readLine()));
+                    updateVehicle.setType(VehicleType.valueOf(buff.readLine()));
+                    int minID = variableNumber;
+                    hashset.removeIf(a -> (a.getId() < minID));
+                    hashset.add(updateVehicle);
+                    System.out.println("Элемент с ID - " + variableNumber + " был успешно обновлен.");
+                    System.out.println();
                     break;
                 case "remove_by_id":
-//                    for (Vehicle delete : hashset) {
-//                        if (delete.getId() == variableNumber) {
-//                            hashset.remove(delete);
-//                        }
-//                    }
-//                    System.out.println("Элемент с ID - " + variableNumber+ " был успешно удален из коллекции.");
+                    int deleteID = variableNumber;
+                    hashset.removeIf(a -> (a.getId() < deleteID));
+                    System.out.println("Элемент с ID - " + variableNumber+ " был успешно удален из коллекции.");
                     break;
                 case "clear":
-//                    hashset.removeAll(hashset);
-//                    System.out.println("Все элементы были успешно удалены из коллекции.");
+                    String deleteName = "sdfukgbsghbuk";
+                    hashset.removeIf(a -> (a.getName() != deleteName));
                     break;
                 case "save":
                     PrintWriter writer = new PrintWriter(String.valueOf(pathCollection));
@@ -165,6 +159,7 @@ public interface executeScript {
                         System.out.println();
                     } else {
                         System.out.println("В коллекции есть объект побольше.");
+                        buff.readLine();buff.readLine();buff.readLine();buff.readLine();buff.readLine();buff.readLine();buff.readLine();
                     }
                     break;
                 case "add_if_min":
@@ -194,15 +189,14 @@ public interface executeScript {
                         System.out.println();
                     } else {
                         System.out.println("В коллекции есть объект поменьше.");
+                        buff.readLine();buff.readLine();buff.readLine();buff.readLine();buff.readLine();buff.readLine();buff.readLine();
                     }
                     break;
                 case "remove_lower":
-//                    for (Vehicle min : hashset) {
-//                        if (min.getCapacity() < variableNumber) {
-//                            hashset.remove(min);
-//                        }
-//                    }
-//                    System.out.println("Все элементы меньше заданного значения были успешно удалены.");
+                    int deleteAll = variableNumber;
+                        hashset.removeIf(a -> (a.getCapacity() < deleteAll));
+
+                    System.out.println("Все элементы меньше заданного значения были успешно удалены.");
                     break;
                 case "average_of_number_of_wheels":
                     float allWheels = 0, countOfWheels = 0, averaga = 0;
@@ -269,23 +263,23 @@ public interface executeScript {
                                 }
                                 check = false;
                             }
-//                            case "" -> {
-//                                for (Vehicle vehicle : hashset) {
-//                                    if (vehicle.getType() == VehicleType.SPACESHIP) {
-//                                        System.out.println(vehicle);
-//                                    }
-//                                    if (vehicle.getType() == VehicleType.BOAT) {
-//                                        System.out.println(vehicle);
-//                                    }
-//                                    if (vehicle.getType() == VehicleType.HOVERBOARD) {
-//                                        System.out.println(vehicle);
-//                                    }
-//                                    if (vehicle.getType() == VehicleType.DRONE) {
-//                                        System.out.println(vehicle);
-//                                    }
-//                                }
-//                                check = false;
-//                            }
+                            default -> {
+                                for (Vehicle vehicle : hashset) {
+                                    if (vehicle.getType() == VehicleType.SPACESHIP) {
+                                        System.out.println(vehicle);
+                                    }
+                                    if (vehicle.getType() == VehicleType.BOAT) {
+                                        System.out.println(vehicle);
+                                    }
+                                    if (vehicle.getType() == VehicleType.HOVERBOARD) {
+                                        System.out.println(vehicle);
+                                    }
+                                    if (vehicle.getType() == VehicleType.DRONE) {
+                                        System.out.println(vehicle);
+                                    }
+                                }
+                                check = false;
+                            }
                         }
                     }
                     break;

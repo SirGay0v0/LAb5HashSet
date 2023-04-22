@@ -35,7 +35,7 @@ k
 7
 7
 BOAT
-remove_lower 4
+remove_lower 6
 average_of_number_of_wheels
 min_by_engine_power
 filter_greater_than_type HOVERBOARD
