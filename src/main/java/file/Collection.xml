@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HashSet>
+    <Vehicle>
+        <id>583</id>
+        <name>g</name>
+        <coordinates>
+            <x>5.0</x>
+            <y>5</y>
+        </coordinates>
+        <creationDate>2023-04-21T00:43:19.035587100</creationDate>
+        <enginePower>55</enginePower>
+        <numberOfWheels>5</numberOfWheels>
+        <capacity>5.0</capacity>
+        <VehicleType>DRONE</VehicleType>
+    </Vehicle>
+</HashSet>
