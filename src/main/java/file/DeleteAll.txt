@@ -1,5 +1,3 @@
-help
-show
-clear
 info
+execute_script Script.txt
 exit

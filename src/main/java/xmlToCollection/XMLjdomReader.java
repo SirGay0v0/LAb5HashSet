@@ -50,7 +50,7 @@ public interface XMLjdomReader {
 
                 String x = String.valueOf(vehicleEL.getChild("coordinates").getChildText("x"));
                 String y = String.valueOf(vehicleEL.getChild("coordinates").getChildText("y"));
-                vehicle.setCoordinates(new Coordinates(Float.parseFloat(x),Integer.parseInt(y)));
+                vehicle.setCoordinates(new Coordinates(Float.parseFloat(x), Integer.parseInt(y)));
 
                 vehicle.setCreationDate(LocalDateTime.parse(vehicleEL.getChildText("creationDate")));
 
@@ -58,7 +58,7 @@ public interface XMLjdomReader {
 
                 vehicle.setNumberOfWheels(Long.parseLong(vehicleEL.getChildText("numberOfWheels")));
 
-                vehicle.setCapacity(Float.parseFloat(vehicleEL.getChildText("capacity")));
+                vehicle.setCapacity(Integer.parseInt(vehicleEL.getChildText("capacity")));
 
                 vehicle.setType(VehicleType.valueOf(vehicleEL.getChildText("VehicleType")));
 
@@ -69,7 +69,7 @@ public interface XMLjdomReader {
                 hashSet.add(vehicle);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Запрашиваемый XML файл отсутствует, либо он поврежден.");
         }
 
     }

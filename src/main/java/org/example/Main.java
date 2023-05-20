@@ -21,12 +21,14 @@ public class Main {
         final String pathCollection = System.getenv("Proga_5_Lab_HashSet_Collection");
         final String pathScript = System.getenv("Proga_5_Lab_HashSet_Script");
 
-        XMLjdomReader.xmlParser(hashset, Path.of(pathCollection));
 
+        XMLjdomReader.xmlParser(hashset, Path.of(pathCollection));
         BufferedReader buff = new BufferedReader(new FileReader(pathCollection));
+
 
         Scanner sc = new Scanner(System.in);
         boolean work = true;
+        boolean defender = false;
         while (work) {
             System.out.print("Напишите команду:");
             String choose = sc.nextLine();
@@ -51,7 +53,7 @@ public class Main {
                 variableEnum = matcherEnum.group();
                 choose = choose.replaceAll("\s[A-Z]*$", "");
             }
-            if(matcherScript.find()){
+            if (matcherScript.find()) {
                 variableScript = choose.replaceAll("^(execute_script)\s", "");
                 choose = choose.replaceAll("\s[\\d\\S]*$", "");
             }
@@ -64,7 +66,8 @@ public class Main {
                 case "remove_by_id" -> removeById.remove(hashset, variableNumber);
                 case "clear" -> clear.clear(hashset);
                 case "save" -> saveCollection.save(hashset, Path.of(pathCollection));
-                case "execute_script" -> executeScript.script(Path.of(pathScript), Path.of(pathCollection), variableScript, hashset, vehicleIterator,date);
+                case "execute_script" ->
+                        executeScript.script(Path.of(pathScript), Path.of(pathCollection), variableScript, hashset, vehicleIterator, date, defender);
                 case "exit" -> work = false;
                 case "add_if_max" -> addIfMax.addifmax(hashset, variableNumber);
                 case "add_if_min" -> addIfMin.addifmin(hashset, variableNumber);

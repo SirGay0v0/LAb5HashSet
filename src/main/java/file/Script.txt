@@ -1,42 +1,5 @@
-help
-info
-show
 add
-ABOBA
-1
-2
-3
-4
-5
-BOAT
-update id 583
-A
-0
-9
-8
-7
-6
-HOVERBOARD
-remove_by_id 583
-save
-add_if_max 10
-g
-5
-5
-5
-5
-5
-SPACESHIP
-add_if_min 2
-k
-7
-7
-7
-7
-7
-BOAT
-remove_lower 6
-average_of_number_of_wheels
-min_by_engine_power
-filter_greater_than_type HOVERBOARD
-exit
+gg
+-5
+9999999999999999999999999999999
+exi

@@ -11,7 +11,7 @@ public class Vehicle {
     private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private long enginePower; //Значение поля должно быть больше 0
     private long numberOfWheels; //Значение поля должно быть больше 0
-    private float capacity; //Значение поля должно быть больше 0
+    private Integer capacity; //Значение поля должно быть больше 0
     private VehicleType type; //Поле может быть null
 
     public long getId() {
@@ -29,7 +29,8 @@ public class Vehicle {
     public void setName(String name, Scanner sc) {
         this.name = name;
     }
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -69,7 +70,7 @@ public class Vehicle {
         return capacity;
     }
 
-    public void setCapacity(float capacity) {
+    public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
 

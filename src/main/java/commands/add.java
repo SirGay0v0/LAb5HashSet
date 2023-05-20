@@ -10,6 +10,8 @@ import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public interface add {
     static void addVehicle(HashSet<Vehicle> hashset, Scanner sc) {
@@ -23,8 +25,12 @@ public interface add {
             System.out.print("Введите имя добавляемого элемента: ");
             String name = sc.nextLine();
             if (!Objects.equals(name, "") && name != null) {
-                newVehicle.setName(name, sc);
-                checkName = false;
+                Pattern patternSpace = Pattern.compile("^(\\s+|^\\t+)$");
+                Matcher matcherSpace = patternSpace.matcher(name);
+                if (!matcherSpace.find()) {
+                    newVehicle.setName(name, sc);
+                    checkName = false;
+                }
             }
         }
 
@@ -78,16 +84,22 @@ public interface add {
                 sc.nextLine();
             }
         }
-
         boolean checkCapacity = true;
         while (checkCapacity) {
             System.out.print("Введите вместимость добавляемого элемента: ");
             try {
-                int capacity = sc.nextInt();
-                sc.nextLine();
-                if (capacity > 0) {
-                    newVehicle.setCapacity(capacity);
+                String lineCapacity = String.valueOf(sc.nextLine());
+                if (Objects.equals(lineCapacity, "")) {
+                    newVehicle.setCapacity(null);
                     checkCapacity = false;
+                } else {
+                    int capacity = Integer.parseInt(lineCapacity);
+                    if (capacity > 0) {
+                        newVehicle.setCapacity(capacity);
+                        checkCapacity = false;
+                    } else {
+                        System.out.println("Введено недопустимое значение.");
+                    }
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Введите значение типа число.");
