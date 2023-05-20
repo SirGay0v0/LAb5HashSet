@@ -15,15 +15,12 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         HashSet<Vehicle> hashset = new HashSet<>();
-        Iterator<Vehicle> vehicleIterator = hashset.iterator();
         Date date = new Date();
 
         final String pathCollection = System.getenv("Proga_5_Lab_HashSet_Collection");
         final String pathScript = System.getenv("Proga_5_Lab_HashSet_Script");
 
-
-        XMLjdomReader.xmlParser(hashset, Path.of(pathCollection));
-        BufferedReader buff = new BufferedReader(new FileReader(pathCollection));
+        XMLjdomReader.xmlParser(hashset, pathCollection);
 
 
         Scanner sc = new Scanner(System.in);
@@ -58,16 +55,16 @@ public class Main {
                 choose = choose.replaceAll("\s[\\d\\S]*$", "");
             }
             switch (choose) {
-                case "help" -> help.help();
-                case "info" -> info.info(hashset, date);
-                case "show" -> show.show(hashset);
+                case "help" -> help.helpCommands();
+                case "info" -> info.infoCommand(hashset, date);
+                case "show" -> show.showCommand(hashset);
                 case "add" -> add.addVehicle(hashset, sc);
-                case "update id" -> updateID.updateID(hashset, sc, variableNumber);
+                case "update id" -> updateID.updateIDCommand(hashset, sc, variableNumber);
                 case "remove_by_id" -> removeById.remove(hashset, variableNumber);
-                case "clear" -> clear.clear(hashset);
+                case "clear" -> clear.clearCollection(hashset);
                 case "save" -> saveCollection.save(hashset, Path.of(pathCollection));
                 case "execute_script" ->
-                        executeScript.script(Path.of(pathScript), Path.of(pathCollection), variableScript, hashset, vehicleIterator, date, defender);
+                        executeScript.script(Path.of(pathScript), Path.of(pathCollection), variableScript, hashset, date, defender);
                 case "exit" -> work = false;
                 case "add_if_max" -> addIfMax.addifmax(hashset, variableNumber);
                 case "add_if_min" -> addIfMin.addifmin(hashset, variableNumber);

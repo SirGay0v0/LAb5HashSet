@@ -8,7 +8,7 @@ public interface averageOfWheels {
 
     static void averagaWheels(HashSet<Vehicle> hashSet) {
 
-        float allWheels = 0, countOfWheels = 0, average = 0;
+        float allWheels = 0, countOfWheels = 0, average;
 
         for (Vehicle vehicle : hashSet) {
             countOfWheels++;

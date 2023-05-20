@@ -9,12 +9,12 @@ import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Iterator;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public interface executeScript {
-    static void script(Path pathScript, Path pathCollection, String scriptName, HashSet<Vehicle> hashset, Iterator<Vehicle> iterator, Date date, boolean defender) throws IOException {
+    static void script(Path pathScript, Path pathCollection, String scriptName, HashSet<Vehicle> hashset, Date date, boolean defender) throws IOException {
 
         String fileName = pathScript + "\\" + scriptName;
         BufferedReader buff = new BufferedReader(new FileReader(fileName));
@@ -57,20 +57,19 @@ public interface executeScript {
                             break;
                         }
                         defender = true;
-                        Iterator<Vehicle> vehicleIterator = hashset.iterator();
-                        executeScript.script(Path.of(String.valueOf(pathScript)), Path.of(String.valueOf(pathCollection)), variableScript, hashset, vehicleIterator, date, defender);
+                        executeScript.script(Path.of(String.valueOf(pathScript)), Path.of(String.valueOf(pathCollection)), variableScript, hashset, date, defender);
                         defender = false;
                         break;
                     case "help":
-                        help.help();
+                        help.helpCommands();
                         System.out.println();
                         break;
                     case "info":
-                        info.info(hashset, date);
+                        info.infoCommand(hashset, date);
                         System.out.println();
                         break;
                     case "show":
-                        show.show(hashset);
+                        show.showCommand(hashset);
                         System.out.println();
                         break;
                     case "add":
@@ -117,7 +116,7 @@ public interface executeScript {
                         break;
                     case "clear":
                         String deleteName = "sdfukgbsghbuk";
-                        hashset.removeIf(a -> (a.getName() != deleteName));
+                        hashset.removeIf(a -> (!Objects.equals(a.getName(), deleteName)));
                         break;
                     case "save":
                         PrintWriter writer = new PrintWriter(String.valueOf(pathCollection));
@@ -220,7 +219,7 @@ public interface executeScript {
                         System.out.println("Все элементы меньше заданного значения были успешно удалены.");
                         break;
                     case "average_of_number_of_wheels":
-                        float allWheels = 0, countOfWheels = 0, averaga = 0;
+                        float allWheels = 0, countOfWheels = 0, averaga;
 
                         for (Vehicle vehicle : hashset) {
                             countOfWheels++;
@@ -305,6 +304,7 @@ public interface executeScript {
                         }
                         break;
                     case "":
+                        System.out.println("Обнаружена пустая линия под номером " + lineCounter);
                     default:
                         System.out.println("В скрипте допущена ошибка (линия "+ lineCounter+") - неизвестная команда" );
                         break;

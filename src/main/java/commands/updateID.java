@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public interface updateID {
 
-    static void updateID(HashSet<Vehicle> hashSet, Scanner sc, int id) {
+    static void updateIDCommand(HashSet<Vehicle> hashSet, Scanner sc, int id) {
         Vehicle newVehicle = new Vehicle();
 
         newVehicle.setId(id);

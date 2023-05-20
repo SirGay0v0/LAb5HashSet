@@ -3,8 +3,6 @@ package commands;
 import vehicle_types_coordinates.Coordinates;
 import vehicle_types_coordinates.Vehicle;
 import vehicle_types_coordinates.VehicleType;
-
-import java.sql.SQLOutput;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.InputMismatchException;
@@ -38,8 +36,8 @@ public interface add {
         while (checkCoordinates) {
             try {
                 System.out.print("Введите координату X добавляемого элемента: ");
-                float x;
-                x = sc.nextFloat();
+                float x = sc.nextFloat();
+
                 sc.nextLine();
                 System.out.print("Введите координату Y добавляемого элемента: ");
                 int y = sc.nextInt();

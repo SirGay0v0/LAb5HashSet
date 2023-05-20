@@ -14,7 +14,7 @@ public interface minByEnginePower {
         }
         for (Vehicle i : hashSet) {
             if (i.getEnginePower() == minPower) {
-                System.out.println(i.toString());
+                System.out.println(i);
             }
         }
     }

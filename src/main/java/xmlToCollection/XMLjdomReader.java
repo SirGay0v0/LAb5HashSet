@@ -22,7 +22,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -30,7 +29,7 @@ import java.util.List;
 
 
 public interface XMLjdomReader {
-    static void xmlParser(HashSet<Vehicle> hashSet, Path path) {
+     static void xmlParser(HashSet<Vehicle> hashSet, String path) {
         String filename = String.valueOf(path);
         try {
             // мы можем создать экземпляр JDOM Document из классов DOM, SAX и STAX Builder

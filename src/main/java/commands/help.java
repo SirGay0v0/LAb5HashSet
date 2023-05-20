@@ -1,7 +1,7 @@
 package commands;
 
 public interface help {
-    static void help() {
+    static void helpCommands() {
         System.out.println("help : вывести справку по доступным командам.");
         System.out.println("info : вывести информацию о коллекции.");
         System.out.println("show : вывести все элементы коллекции.");
