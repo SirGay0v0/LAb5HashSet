@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <HashSet>
     <Vehicle>
-        <id>dfgh</id>
-        <name>           </name>
+        <id>75</id>
+        <name>h</name>
         <coordinates>
-            <x>999999999999999999999999999999</x>
-            <y>999999999999999999999999999</y>
+            <x>6.0</x>
+            <y>6</y>
         </coordinates>
-        <creationDate>2023-088888888888888800</creationDate>
-        <enginePower>-100</enginePower>
-        <numberOfWheels>-9999999999999</numberOfWheels>
-        <capacity> </capacity>
-        <VehicleType>rwthwthrh</VehicleType>
+        <creationDate>2023-05-20T10:33:16.215790800</creationDate>
+        <enginePower>6</enginePower>
+        <numberOfWheels>6</numberOfWheels>
+        <capacity>6.0</capacity>
+        <VehicleType>BOAT</VehicleType>
     </Vehicle>
 </HashSet>
