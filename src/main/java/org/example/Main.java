@@ -62,7 +62,7 @@ public class Main {
                 case "update id" -> updateID.updateIDCommand(hashset, sc, variableNumber);
                 case "remove_by_id" -> removeById.remove(hashset, variableNumber);
                 case "clear" -> clear.clearCollection(hashset);
-                case "save" -> saveCollection.save(hashset, Path.of(pathCollection));
+                case "save" -> saveCollection.save(hashset, pathCollection);
                 case "execute_script" ->
                         executeScript.script(Path.of(pathScript), Path.of(pathCollection), variableScript, hashset, date, defender);
                 case "exit" -> work = false;

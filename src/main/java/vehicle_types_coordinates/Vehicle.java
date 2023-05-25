@@ -66,7 +66,7 @@ public class Vehicle {
         this.numberOfWheels = numberOfWheels;
     }
 
-    public float getCapacity() {
+    public Integer getCapacity() {
         return capacity;
     }
 
