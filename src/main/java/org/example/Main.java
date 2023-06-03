@@ -1,5 +1,6 @@
 package org.example;
 
+import check_for_duplicates.duplicates_remove;
 import commands.*;
 import vehicle_types_coordinates.Vehicle;
 import xmlToCollection.XMLjdomReader;
@@ -10,18 +11,29 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author SirGay
+ * @version final
+ */
 public class Main {
 
     public static void main(String[] args) throws IOException {
-
+        /**
+         * @link Объявление составляющих
+         */
         HashSet<Vehicle> hashset = new HashSet<>();
         Date date = new Date();
 
         final String pathCollection = System.getenv("Proga_5_Lab_HashSet_Collection");
         final String pathScript = System.getenv("Proga_5_Lab_HashSet_Script");
-
+/**
+ * @link перенос из xml в коллекцию
+ */
         XMLjdomReader.xmlParser(hashset, pathCollection);
 
+        duplicates_remove.remove(hashset);
+        saveCollection.save(hashset, pathCollection);
+        System.out.println("Все элементы были обновлены до их последней модификации.");
 
         Scanner sc = new Scanner(System.in);
         boolean work = true;
@@ -54,6 +66,9 @@ public class Main {
                 variableScript = choose.replaceAll("^(execute_script)\s", "");
                 choose = choose.replaceAll("\s[\\d\\S]*$", "");
             }
+            /**
+             * @link список всех команд
+             */
             switch (choose) {
                 case "help" -> help.helpCommands();
                 case "info" -> info.infoCommand(hashset, date);
